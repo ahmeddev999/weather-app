@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+
+
+body {
+background: #6bc6ff;
+background: linear-gradient(0deg, rgba(107, 198, 255, 1) 0%, rgba(0, 106, 255, 1) 100%);
+}
+
+
+
+/* nightmode */
+
+/* body {
+  background: #9836bf;
+  background: linear-gradient(0deg, rgba(152, 54, 191, 1) 0%, rgba(101, 48, 173, 1) 19%, rgba(65, 43, 161, 1) 35%, rgba(34, 12, 76, 1) 83%, rgba(26, 0, 46, 1) 100%);
+} */
