@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -6,13 +6,13 @@ html, body {
   background: linear-gradient(to top, rgba(107, 198, 255, 1), rgba(0, 106, 255, 1));
   background-attachment: fixed;
   background-repeat: no-repeat;
-}
+} */
 
 
 
 
 /* nightmode */
-/* html, body {
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ html, body {
   );
   background-attachment: fixed;
   background-repeat: no-repeat;
-} */
+}
 
 
 
