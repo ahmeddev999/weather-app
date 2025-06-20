@@ -13,13 +13,13 @@
 <body>
 <header class="flex flex-col items-center">
 
-  <h1 class="text-center text-4xl font-medium text-blue-100 p-4 mb-6 mt-3">
+  <h1 class="text-center text-6xl font-medium text-white p-4 mb-6 mt-3">
     Weather Sky
   </h1>
 
-  <form action="/weather" method="POST" class="min-w-xl max-w-8xl mx-auto flex items-center gap-4 bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-4 rounded-xl">
+  <form action="/weather" method="POST" class="w-[85%] mx-auto flex items-center gap-4 bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-4 rounded-xl">
 
-  <input class="flex-grow h-12 px-4 rounded-lg border-none bg-white/20 text-white placeholder:font-semibold placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-400" 
+  <input class="flex-grow w-full h-12 px-4 rounded-lg border-none bg-white/20 text-white placeholder:font-semibold placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-400" 
     type="text" 
     name="city" 
     placeholder="Enter city name" 
@@ -32,5 +32,94 @@
 
 </header>
 
+<main class="flex flex-col items-center mt-16 text-blue-100 font-bold">
+  <div>
+
+    <h2 class="text-5xl">Erbil <!-- the erbil is data of user search --> Forecast</h2>
+
+    <div class="text-center">
+
+      <p class="text-8xl mt-10 mb-1">39 <!-- &deg;right now temp --></p>
+
+      <p class="text-[20px] font-normal">Sunny</p>
+
+    </div>
+
+    <div class="flex justify-center mb-10 text-[22px]">
+
+      <p class="mr-1">H:40&deg;</p> <!-- the highest temp of today -->
+
+      <p class="ml-1">L:24&deg;</p> <!-- the lowest temp of today -->
+      
+    </div>
+
+  </div>
+
+  <!-- 7 days 👇 -->
+  
+  <h3 class="text-[20px] mb-6">Next 7 Days Outlook</h3>
+  
+<div class="w-auto mx-auto bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-4 rounded-xl">
+  <!-- One Day Forecast Item -->
+   <!-- day1 -->
+  <div class="flex items-center justify-evenly gap-6 p-2">
+    <!-- Date -->
+    <p class="text-3xl font-semibold">Today</p>
+
+    <!-- Icon -->
+    <img class="h-12 w-12" src="/images/weather-clear-symbolic.svg" alt="sunny">
+
+    <!-- Temperature -->
+    <div class="flex items-center gap-1 text-3xl">
+      <p>24&deg;</p>
+      <span class="mr-2 ml-1.5">-</span>
+      <p>40&deg;</p>
+    </div>
+  </div>
+
+  <!-- day2 -->
+
+    <div class="flex items-center justify-evenly gap-6 p-2">
+    <!-- Date -->
+    <p class="text-3xl font-semibold">Today</p>
+
+    <!-- Icon -->
+    <img class="h-12 w-12" src="/images/weather-clear-symbolic.svg" alt="sunny">
+
+    <!-- Temperature -->
+    <div class="flex items-center gap-1 text-3xl">
+      <p>24&deg;</p>
+      <span class="mr-2 ml-1.5">-</span>
+      <p>40&deg;</p>
+    </div>
+  </div>
+
+  <!-- day3 -->
+
+  <div class="flex items-center justify-evenly gap-6 p-2">
+    <!-- Date -->
+    <p class="text-3xl font-semibold">Today</p>
+
+    <!-- Icon -->
+    <img class="h-12 w-12" src="/images/weather-clear-symbolic.svg" alt="sunny">
+
+    <!-- Temperature -->
+    <div class="flex items-center gap-1 text-3xl">
+      <p>24&deg;</p>
+      <span class="mr-2 ml-1.5">-</span>
+      <p>40&deg;</p>
+    </div>
+  </div>
+
+
+<!-- end of box -->
+</div>
+
+
+
+
+
+</main>
+<!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
 </body>
 </html>
