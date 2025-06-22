@@ -184,21 +184,69 @@
 </div><!-- end of box -->
 </main>
 
-<section class="flex justify-center items-center mt-16 text-blue-100">
+<section class="flex justify-center items-center mt-16 text-white ">
+  <div class="w-[90%] lg:max-w-[50%] flex flex-wrap justify-center gap-8 mx-auto mb-6">
 
-  <div class="w-[85%] lg:max-w-[50%] flex flex-wra mx-auto mb-6 space-y-4">
-
-    <div class="flex flex-col items-center justify-baseline m-2  bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-4 rounded-xl mb-6 space-y-4">
-      <div class="flex font-bold items-center">
-        <img class="w-4 h-4 opacity-40" src="/images/thermometer-measure-temp-svgrepo-com.svg" width="4" height="4" alt="temp">
-        <p class="text-[8px] opacity-40 font-bold text-black">FEELS LIKE</p>
+    <!-- Feels Like Box -->
+    <div class="flex flex-col items-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl w-[140px] sm:w-[180px]">
+      <div class="flex items-center gap-2">
+        <img class="w-6 h-6 opacity-70" src="/images/thermometer-measure-temp-svgrepo-com (1).svg" alt="sun">
+        <p class="text-sm sm:text-lg font-bold opacity-80 mr-9 whitespace-nowrap">FEELS LIKE</p>
       </div>
-      <p class="text-2xl font-bold">25&deg;</p>
+        <p class="text-4xl sm:text-5xl font-bold mt-4 ml-3.5 flex justify-center items-start">
+        1<span class="text-5xl font-normal">°</span>
+     </p>
     </div>
-    
-  </div>
 
+    <!-- UV Index Box -->
+    <div class="flex flex-col items-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl w-[140px] sm:w-[180px]">
+      
+      <div class="flex items-center gap-2">
+        <img class="w-6 h-6 opacity-70" src="/images/sun-svgrepo-com (1).svg" alt="sun">
+        <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap">UV INDEX</p>
+      </div>
+      <p class="text-4xl sm:text-5xl mt-4 font-bold">1</p>
+    </div>
+
+    <!-- WIND Box -->
+    <div class="w-[85%] mx-auto bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl">
+  <p class="text-[12px] mb-4 text-sm sm:text-lg">WIND</p>
+
+  <div class="grid grid-cols-12 gap-4">
+    <!-- Left Column: 55% ~ col-span-7 -->
+    <div class="col-span-7">
+      <div class="w-full flex justify-between items-center">
+        <p>Wind</p>
+        <p>8km/h</p>
+      </div>
+      <hr class="w-full opacity-45 mb-3">
+
+      <div class="w-full flex justify-between items-center">
+        <p>Gusts</p>
+        <p>6km/h</p>
+      </div>
+      <hr class="w-full opacity-45 mb-3">
+
+      <div class="w-full flex justify-between items-center">
+        <p>Direction</p>
+        <p>272&deg;W</p>
+      </div>
+    </div>
+
+    <!-- Right Column: 30% ~ col-span-4 -->
+    <div class="col-span-5 bg-white/5 p-3 rounded-lg ml-10">
+      <p class="text-sm">Right side content goes here</p>
+      <!-- Replace this with anything you need -->
+    </div>
+  </div>
+</div>
+
+
+
+
+  </div>
 </section>
+
 <!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
 </body>
 </html>
