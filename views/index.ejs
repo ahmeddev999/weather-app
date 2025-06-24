@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/src/main.css">
+  <link href="/output.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sriracha&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  <title>Weather Sky</title>
+</head>
+<body>
+
+
+<header class="flex flex-col items-center">
+
+  <h1 class="text-center text-6xl font-medium text-blue-100 p-4 mb-6 mt-3">
+    Weather Sky
+  </h1>
+
+  <form action="/weather" method="POST" class="w-[85%] mx-auto flex items-center gap-4 bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-4 rounded-xl">
+
+  <input class="flex-grow w-full h-12 px-4 rounded-lg border-none bg-white/20 text-white placeholder:font-semibold placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-400" 
+    type="text" 
+    name="city" 
+    placeholder="Enter city name" 
+    required
+  >
+  <button class="h-12 px-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all duration-300" type="submit">
+    Search
+  </button><!-- bg-purple-500 hover:bg-purple-600 for nighr mode -->
+</form>
+
+</header>
+
+<main class="flex flex-col items-center mt-16 text-blue-100 font-bold">
+  <div>
+
+    <h2 class="text-5xl">Erbil <!-- the erbil is data of user search --> Forecast</h2>
+
+    <div class="text-center">
+
+     <p class="text-8xl mt-10 mb-1 ml-4.5 flex justify-center items-start">
+        39<span class="text-5xl font-normal mt-1">°</span>
+     </p>
+
+
+      <p class="text-[20px] font-normal">Sunny</p><!-- data -->
+
+    </div>
+
+    <div class="flex justify-center mb-10 text-[22px]">
+
+      <p class="mr-1">H:40&deg;</p> <!-- the highest temp of today -->
+
+      <p class="ml-1">L:24&deg;</p> <!-- the lowest temp of today -->
+      
+    </div>
+
+  </div>
+
+  <!-- 7 days 👇 -->
+  
+  <h3 class="text-[20px] mb-6">Next 7 Days Outlook</h3>
+
+  <!-- Forecast -->
+  <!-- the temp numbers wil replace by data -->
+  <!-- use date for dates -->
+  <!-- max-w-md if it has issue -->
+  <div class="w-[85%] lg:max-w-[50%] mx-auto bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-4 rounded-xl mb-6 space-y-4">
+
+  <!-- Day 1 -->
+  <div class="flex items-center justify-between gap-4">
+    <!-- Date -->
+    <p class="text-2xl sm:text-3xl w-20">Today</p><!-- data -->
+
+    <!-- Icon -->
+    <div class="w-12 h-12 flex items-center justify-center">
+      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" />
+    </div>
+
+    <!-- Temp -->
+    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
+      <p class="w-10 text-end">24&deg;</p><!-- data -->
+      <span class="mx-1">-</span>
+      <p class="w-10 text-end">40&deg;</p><!-- data -->
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="flex items-center justify-between gap-4">
+    <p class="text-2xl sm:text-3xl w-20">Wed</p><!-- data -->
+
+    <div class="w-12 h-12 flex items-center justify-center">
+      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" />
+    </div>
+
+    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
+      <p class="w-10 text-end">24&deg;</p><!-- data -->
+      <span class="mx-1">-</span>
+      <p class="w-10 text-end">40&deg;</p><!-- data -->
+    </div>    
+  </div>
+
+  <!-- Day 3 -->
+  <div class="flex items-center justify-between gap-4">
+    <p class="text-2xl sm:text-3xl w-20">Thu</p><!-- data -->
+
+    <div class="w-12 h-12 flex items-center justify-center">
+      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" />
+    </div>
+
+    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
+      <p class="w-10 text-end">24&deg;</p><!-- data -->
+      <span class="mx-1">-</span>
+      <p class="w-10 text-end">40&deg;</p><!-- data -->
+    </div>
+  </div>
+
+  <!-- day4 -->
+  <div class="flex  items-center justify-between gap-4">
+    <p class="text-2xl sm:text-3xl w-20">Fri</p><!-- data -->
+
+    <div class="w-12 h-12 flex items-center justify-center">
+      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="sunny">
+    </div>
+
+    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
+      <p class="w-10 text-end">24&deg;</p><!-- data -->
+      <span class="mx-1">-</span>
+      <p class="w-10 text-end">44&deg;</p><!-- data -->
+    </div>
+
+  </div>
+
+  <!-- day5 -->
+   <div class="flex items-center justify-between  gap-4">
+    <p class="text-2xl sm:text-3xl w-20">Sat</p><!-- data -->
+
+    <div class="w-12 h-12 flex items-center justify-center">
+      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="">
+    </div>
+
+    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
+      <p class="w-10 text-end">26&deg;</p><!-- data -->
+      <span class="mx-1">-</span>
+      <p class="w-10 text-end">39&deg;</p><!-- data -->
+    </div>
+
+   </div>
+
+   <!-- day6 -->
+
+   <div class="flex items-center justify-between gap-4">
+    <p class="text-2xl sm:text-3xl w-20">Sun</p><!-- data -->
+
+    <div class="w-12 h-12 flex items-center justify-center">
+      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="sunny">
+    </div>
+
+    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
+      <p class="w-10 text-end">33&deg;</p><!-- data -->
+      <span class="mx-1">-</span>
+      <p class="w-10 text-end">44&deg;</p><!-- data -->
+    </div>
+
+   </div>
+
+   <!-- day7 -->
+    <div class="flex items-center justify-between gap-4">
+    <p class="text-2xl sm:text-3xl w-20">Mon</p><!-- data -->
+
+    <div class="w-12 h-12 flex items-center justify-center">
+      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="sunny">
+    </div>
+
+    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
+      <p class="w-10 text-end">33&deg;</p><!-- data -->
+      <span class="mx-1">-</span>
+      <p class="w-10 text-end">44&deg;</p><!-- data -->
+    </div>
+
+   </div>
+
+</div><!-- end of box -->
+</main>
+
+<section class="flex justify-center items-center mt-16 text-white ">
+  <div class="w-[95%] lg:max-w-[50%] flex flex-wrap justify-center gap-8 mx-auto mb-6">
+
+    <!-- Feels Like Box -->
+    <div class="flex flex-col items-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl w-[140px] sm:w-[180px]">
+      <div class="flex items-center gap-2">
+        <img class="w-6 h-6 opacity-70" src="/images/thermometer-measure-temp-svgrepo-com (1).svg" alt="sun">
+        <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-10">FEELS LIKE</p>
+      </div>
+        <p class="text-4xl sm:text-5xl font-bold mt-4 ml-3.5 flex justify-center items-start">
+        1<span class="text-5xl font-normal">°</span><!-- data -->
+     </p>
+    </div>
+
+    <!-- UV Index Box -->
+    <div class="flex flex-col items-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl w-[140px] sm:w-[180px]">
+      
+      <div class="flex items-center gap-2">
+        <img class="w-6 h-6 opacity-70" src="/images/sun-svgrepo-com (1).svg" alt="sun">
+        <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-3">UV INDEX</p>
+      </div>
+      <p class="text-4xl sm:text-5xl mt-4 font-bold">1</p><!-- data -->
+    </div>
+
+    <!-- HUMIDITY -->
+    <div class="flex flex-col items-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl w-[140px] sm:w-[180px]">
+      <div class="flex items-center gap-2">
+        <img class="w-6 h-6 opacity-70" src="/images/humidity-svgrepo-com.svg" alt="humidity">
+        <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-3">HUMIDITY</p>
+      </div>
+      <p class="text-4xl sm:text-5xl mt-4 ml-2 font-bold">22<span class="text-2xl">%</span></p>
+    </div>
+
+    <!-- WIND Box -->
+    <div class="w-[95%] mx-auto bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl">
+  <p class="text-[12px] mb-4 text-sm sm:text-md">WIND</p>
+
+  <div class="grid grid-cols-14 gap-4">
+    <!-- Left Column: ~ col-span-7 -->
+    <div class="col-span-7 mt-2">
+      <div class="w-full flex justify-between items-center">
+        <p>Wind</p>
+        <p>8km/h</p><!-- data -->
+      </div>
+      <hr class="w-full opacity-45 mb-3">
+
+      <div class="w-full flex justify-between items-center">
+        <p>Gusts</p>
+        <p>6km/h</p><!-- data -->
+      </div>
+      <hr class="w-full opacity-45 mb-3">
+
+      <div class="w-full flex justify-between items-center">
+        <p>Direction</p>
+        <p>272&deg;W</p><!-- data -->
+      </div>
+    </div>
+
+    <!-- we can get the rotate and apply a color for that rotate matchs the letter -->
+  <div class="col-span-7 mx-auto bg-white/5 p-1.5 rounded-lg w-30 h-30 grid grid-rows-3 grid-cols-3 text-blue-100 text-center items-center justify-center">
+    <!-- North -->
+    <div class="col-start-2 row-start-1 mb-5 n">N</div>
+    <!-- West -->
+    <div class="col-start-1 row-start-2 mr-5 w">W</div>
+     <!-- Center (Speed & Unit) -->
+    <div class="col-start-2 row-start-2"><!-- data -->
+      <p class="text-lg font-bold">7</p>
+      <p class="text-xs">km/h</p>
+    </div>
+    <!-- East -->
+    <div class="col-start-3 row-start-2 ml-5 e">E</div>
+    <!-- South -->
+    <div class="col-start-2 row-start-3 mt-5 s">S</div>
+    </div>
+  </div>
+</div>
+<div class="flex justify-center items-center mt-16 text-white ">
+  <div class="w-[95%] lg:max-w-[50%] flex flex-row flex-wrap justify-center gap-8 mx-auto mb-6">
+
+    <!-- Precipitation Box -->
+    <div class="flex items-center justify-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl min-w-[140px] sm:min-w-[180px] flex-1">
+      <div>
+        <div class="flex items-center gap-2 justify-center">
+          <img class="w-8 h-8 opacity-70" src="/images/water-drop-svgrepo-com.svg" alt="dropwater">
+          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-6">PRECIPITATION</p>
+        </div>
+        <p class="text-4xl sm:text-5xl mt-4 font-bold ml-7 mb-4">12<span class="text-2xl font-bold">mm</span></p>
+        <p class="text-sm m-0.5">today</p>
+      </div>
+    </div>
+
+    <!-- Sun Box -->
+    <div class="flex items-center justify-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl min-w-[140px] sm:min-w-[180px] flex-1">
+      <div>
+        <div class="flex items-center gap-2 justify-center">
+          <img class="w-6 h-6 opacity-70" src="/images/sunrise-svgrepo-com.svg" alt="sunrise">
+          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-7">SUNRISE</p>
+        </div>
+        <p class="text-2xl sm:text-md mt-1.5 font-bold">4:47<span class="text-[15px]">AM</span></p>
+        <hr class="w-full opacity-45 mb-4">
+        <div class="flex items-center gap-2 mb-1 justify-center">
+          <img class="w-6 h-6 opacity-70" src="/images/sunset-svgrepo-com.svg" alt="sunset">
+          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-7 mt-0.5">SUNSET</p>
+        </div>
+        <p class="text-2xl sm:text-md font-bold">7:22<span class="text-[15px]">PM</span></p>
+      </div>
+    </div>
+
+    <!-- Visibility Box -->
+    <div class="flex items-center justify-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl min-w-[140px] sm:min-w-[180px] flex-1">
+      <div>
+        <div class="flex items-center gap-2 justify-center">
+          <img class="w-6 h-6 opacity-70" src="/images/eye-svgrepo-com.svg" alt="Visibility">
+          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-7">VISIBILITY</p>
+        </div>
+        <p class="text-4xl sm:text-5xl mt-4 font-bold ml-5 mb-4">19<span class="text-2xl">km</span></p>
+        <p class="text-sm">Perfectly clear view</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</section> 
+
+
+<!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
+</body>
+</html>
