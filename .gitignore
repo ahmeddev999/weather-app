@@ -1,0 +1,6 @@
+.gitattrubutes
+# Ignore all files in the .gitattrubutes directory
+.gitattrubutes/*
+# Ignore all files in the .gitattrubutes directory except for the .gitignore file
+.env
+# Ignore the .env file
