@@ -23,10 +23,26 @@ app.use('/src', express.static(path.join(__dirname, 'src')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Routes
-app.get('/', (req, res) => {
-  res.render('index');
+//when user logs
+app.get('/', async (req, res) => {
+  try {
+    const city = "Switzerland";
+    const geoResponse = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`)
+    const geoData = geoResponse.data[0];
+    if (!geoData) {
+      return res.status(404).send("City not found");
+    }
+    const { lat, lon } = geoData;
+
+    const currentWeatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+    res.render("index", { weather: currentWeatherResponse.data, city });
+  } catch (erorr) {
+    console.log(erorr.response?.data || erorr.message);
+    res.status(500).send("Error fetching weather data");
+  }
 });
 
+// when user wants to search
 app.post("/weather", async (req, res) => {
     try {
     // we getting user request
@@ -40,7 +56,7 @@ app.post("/weather", async (req, res) => {
     // getting the weather here and sending it back to user
     const weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
     res.render("index", { weather: weatherResponse.data, city });
-    console.log(geoData);
+    console.log(weatherResponse.data);
   } catch (erorr) {
     console.log(erorr.response?.data || erorr.message);
     res.status(500).send("Error fetching weather data");
