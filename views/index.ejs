@@ -34,155 +34,56 @@
 </form>
 
 </header>
-
+<% if (locals.weather || locals.city) {%>
 <main class="flex flex-col items-center mt-16 text-blue-100 font-bold">
   <div>
 
-    <h2 class="text-5xl"> <!-- the erbil is data of user search --> Forecast</h2>
+    <h2 class="text-5xl"> <%= city %> Forecast</h2>
 
     <div class="text-center">
 
      <p class="text-8xl mt-10 mb-1 ml-4.5 flex justify-center items-start">
-        39<span class="text-5xl font-normal mt-1">°</span>
+        <%= Math.floor(weather.main.temp)%><span class="text-5xl font-normal mt-1">°</span>
      </p>
 
 
-      <p class="text-[20px] font-normal">Sunny</p><!-- data -->
+      <p class="text-[20px] font-normal"><%= weather.weather[0].description %></p><!-- data -->
 
     </div>
 
     <div class="flex justify-center mb-10 text-[22px]">
 
-      <p class="mr-1">H:40&deg;</p> <!-- the highest temp of today -->
+      <p class="mr-1">H:<%= Math.floor(weather.main.temp_max)%>&deg;</p> <!-- the highest temp of today -->
 
-      <p class="ml-1">L:24&deg;</p> <!-- the lowest temp of today -->
+      <p class="ml-1">L:<%= Math.floor(weather.main.temp_min) %>&deg;</p> <!-- the lowest temp of today -->
       
     </div>
 
   </div>
-
-  <!-- 7 days 👇 -->
   
-  <h3 class="text-[20px] mb-6">Next 7 Days Outlook</h3>
+  <h3 class="text-[20px] mb-6">Today's Outlook</h3>
 
   <!-- Forecast -->
   <!-- the temp numbers wil replace by data -->
-  <!-- use date for dates -->
-  <!-- max-w-md if it has issue -->
   <div class="w-[85%] lg:max-w-[50%] mx-auto bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-4 rounded-xl mb-6 space-y-4">
 
   <!-- Day 1 -->
   <div class="flex items-center justify-between gap-4">
     <!-- Date -->
-    <p class="text-2xl sm:text-3xl w-20">Today</p><!-- data -->
+    <p class="text-2xl sm:text-3xl w-20">Today</p>
 
     <!-- Icon -->
     <div class="w-12 h-12 flex items-center justify-center">
-      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" />
+      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" /> <!-- data -->
     </div>
 
     <!-- Temp -->
     <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
-      <p class="w-10 text-end">24&deg;</p><!-- data -->
+      <p class="w-10 text-end"><%= Math.floor(weather.main.temp_min) %>&deg;</p><!-- data -->
       <span class="mx-1">-</span>
-      <p class="w-10 text-end">40&deg;</p><!-- data -->
+      <p class="w-10 text-end"><%= Math.floor(weather.main.temp_max) %>&deg;</p><!-- data -->
     </div>
   </div>
-
-  <!-- Day 2 -->
-  <div class="flex items-center justify-between gap-4">
-    <p class="text-2xl sm:text-3xl w-20">Wed</p><!-- data -->
-
-    <div class="w-12 h-12 flex items-center justify-center">
-      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" />
-    </div>
-
-    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
-      <p class="w-10 text-end">24&deg;</p><!-- data -->
-      <span class="mx-1">-</span>
-      <p class="w-10 text-end">40&deg;</p><!-- data -->
-    </div>    
-  </div>
-
-  <!-- Day 3 -->
-  <div class="flex items-center justify-between gap-4">
-    <p class="text-2xl sm:text-3xl w-20">Thu</p><!-- data -->
-
-    <div class="w-12 h-12 flex items-center justify-center">
-      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" />
-    </div>
-
-    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
-      <p class="w-10 text-end">24&deg;</p><!-- data -->
-      <span class="mx-1">-</span>
-      <p class="w-10 text-end">40&deg;</p><!-- data -->
-    </div>
-  </div>
-
-  <!-- day4 -->
-  <div class="flex  items-center justify-between gap-4">
-    <p class="text-2xl sm:text-3xl w-20">Fri</p><!-- data -->
-
-    <div class="w-12 h-12 flex items-center justify-center">
-      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="sunny">
-    </div>
-
-    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
-      <p class="w-10 text-end">24&deg;</p><!-- data -->
-      <span class="mx-1">-</span>
-      <p class="w-10 text-end">44&deg;</p><!-- data -->
-    </div>
-
-  </div>
-
-  <!-- day5 -->
-   <div class="flex items-center justify-between  gap-4">
-    <p class="text-2xl sm:text-3xl w-20">Sat</p><!-- data -->
-
-    <div class="w-12 h-12 flex items-center justify-center">
-      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="">
-    </div>
-
-    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
-      <p class="w-10 text-end">26&deg;</p><!-- data -->
-      <span class="mx-1">-</span>
-      <p class="w-10 text-end">39&deg;</p><!-- data -->
-    </div>
-
-   </div>
-
-   <!-- day6 -->
-
-   <div class="flex items-center justify-between gap-4">
-    <p class="text-2xl sm:text-3xl w-20">Sun</p><!-- data -->
-
-    <div class="w-12 h-12 flex items-center justify-center">
-      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="sunny">
-    </div>
-
-    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
-      <p class="w-10 text-end">33&deg;</p><!-- data -->
-      <span class="mx-1">-</span>
-      <p class="w-10 text-end">44&deg;</p><!-- data -->
-    </div>
-
-   </div>
-
-   <!-- day7 -->
-    <div class="flex items-center justify-between gap-4">
-    <p class="text-2xl sm:text-3xl w-20">Mon</p><!-- data -->
-
-    <div class="w-12 h-12 flex items-center justify-center">
-      <img class="w-10 h-10" src="/images/weather-clear-symbolic.svg" alt="sunny">
-    </div>
-
-    <div class="flex justify-end items-center w-28 text-2xl sm:text-3xl font-mono">
-      <p class="w-10 text-end">33&deg;</p><!-- data -->
-      <span class="mx-1">-</span>
-      <p class="w-10 text-end">44&deg;</p><!-- data -->
-    </div>
-
-   </div>
 
 </div><!-- end of box -->
 </main>
@@ -197,18 +98,8 @@
         <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-10">FEELS LIKE</p>
       </div>
         <p class="text-4xl sm:text-5xl font-bold mt-4 ml-3.5 flex justify-center items-start">
-        1<span class="text-5xl font-normal">°</span><!-- data -->
+        <%= Math.floor(weather.main.feels_like) %><span class="text-5xl font-normal">°</span><!-- data -->
      </p>
-    </div>
-
-    <!-- UV Index Box -->
-    <div class="flex flex-col items-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl w-[140px] sm:w-[180px]">
-      
-      <div class="flex items-center gap-2">
-        <img class="w-6 h-6 opacity-70" src="/images/sun-svgrepo-com (1).svg" alt="sun">
-        <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-3">UV INDEX</p>
-      </div>
-      <p class="text-4xl sm:text-5xl mt-4 font-bold">1</p><!-- data -->
     </div>
 
     <!-- HUMIDITY -->
@@ -311,8 +202,7 @@
 </div>
 </div>
 </section> 
-
-
+<% } %>
 <!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
 </body>
 </html>
