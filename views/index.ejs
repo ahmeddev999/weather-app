@@ -34,7 +34,7 @@
 </form>
 
 </header>
-<% if (locals.weather || locals.city) {%>
+
 <main class="flex flex-col items-center mt-16 text-blue-100 font-bold">
   <div>
 
@@ -42,8 +42,8 @@
 
     <div class="text-center">
 
-     <p class="text-8xl mt-10 mb-1 ml-4.5 flex justify-center items-start">
-        <%= Math.floor(weather.main.temp)%><span class="text-5xl font-normal mt-1">°</span>
+     <p class="text-8xl mt-10 mb-1 ml-6 flex justify-center items-start">
+        <%= Math.floor(weather.main.temp)%><span class="text-5xl font-bold mt-1">°</span>
      </p>
 
 
@@ -108,7 +108,7 @@
         <img class="w-6 h-6 opacity-70" src="/images/humidity-svgrepo-com.svg" alt="humidity">
         <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-3">HUMIDITY</p>
       </div>
-      <p class="text-4xl sm:text-5xl mt-4 ml-2 font-bold">22<span class="text-2xl">%</span></p>
+      <p class="text-4xl sm:text-5xl mt-4 ml-2 font-bold"><%= weather.main.humidity %><span class="text-2xl">%</span></p>
     </div>
 
     <!-- WIND Box -->
@@ -120,38 +120,55 @@
     <div class="col-span-7 mt-2">
       <div class="w-full flex justify-between items-center">
         <p>Wind</p>
-        <p>8km/h</p><!-- data -->
+        <p><%= Math.floor(weather.wind.speed) %> km/h</p><!-- data -->
       </div>
       <hr class="w-full opacity-45 mb-3">
-
+      <% if (locals.weather.wind.gusts) {%>
       <div class="w-full flex justify-between items-center">
         <p>Gusts</p>
-        <p>6km/h</p><!-- data -->
+        <p><%= locals.weather.wind.gusts %>km/h</p><!-- data -->
       </div>
       <hr class="w-full opacity-45 mb-3">
-
+      <% } %>
       <div class="w-full flex justify-between items-center">
         <p>Direction</p>
-        <p>272&deg;W</p><!-- data -->
+        <p><%= weather.wind.deg %>&deg;<% const direction = ['N','NE','E','SE','S','SW','W','NW'][Math.round(locals.weather.wind.deg / 45) % 8]; %><%= direction %></p><!-- data -->
       </div>
     </div>
-
+    <% 
+    const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    const dirIndex = Math.round(weather.wind.deg / 45) % 8;
+    const dir = directions[dirIndex];
+    function getDirClass(letter)  {
+      return dir === letter ? 'text-yellow-400 font-bold scale-125' : 'text-blue-100 opacity-70';
+    }%>
     <!-- we can get the rotate and apply a color for that rotate matchs the letter -->
-  <div class="col-span-7 mx-auto bg-white/5 p-1.5 rounded-lg w-30 h-30 grid grid-rows-3 grid-cols-3 text-blue-100 text-center items-center justify-center">
-    <!-- North -->
-    <div class="col-start-2 row-start-1 mb-5 n">N</div>
-    <!-- West -->
-    <div class="col-start-1 row-start-2 mr-5 w">W</div>
-     <!-- Center (Speed & Unit) -->
-    <div class="col-start-2 row-start-2"><!-- data -->
-      <p class="text-lg font-bold">7</p>
-      <p class="text-xs">km/h</p>
-    </div>
-    <!-- East -->
-    <div class="col-start-3 row-start-2 ml-5 e">E</div>
-    <!-- South -->
-    <div class="col-start-2 row-start-3 mt-5 s">S</div>
-    </div>
+  <div class="col-span-7 flex justify-center items-center">
+    <!-- Wind Direction Box -->
+  <div class="mx-auto bg-white/5 p-2 rounded-md w-40 h-40 grid grid-rows-5 grid-cols-5 text-center items-center justify-center relative shadow-lg">
+  <!-- N -->
+  <div class="col-start-3 row-start-1 <%= getDirClass('N') %>">N</div>
+  <!-- NE -->
+  <div class="col-start-5 row-start-1 <%= getDirClass('NE') %>">NE</div>
+  <!-- E -->
+  <div class="col-start-5 row-start-3 <%= getDirClass('E') %>">E</div>
+  <!-- SE -->
+  <div class="col-start-5 row-start-5 <%= getDirClass('SE') %>">SE</div>
+  <!-- S -->
+  <div class="col-start-3 row-start-5 <%= getDirClass('S') %>">S</div>
+  <!-- SW -->
+  <div class="col-start-1 row-start-5 <%= getDirClass('SW') %>">SW</div>
+  <!-- W -->
+  <div class="col-start-1 row-start-3 <%= getDirClass('W') %>">W</div>
+  <!-- NW -->
+  <div class="col-start-1 row-start-1 <%= getDirClass('NW') %>">NW</div>
+  <!-- Center: Wind speed -->
+  <div class="col-start-3 row-start-3 flex flex-col items-center justify-center">
+    <span class="text-3xl font-bold text-blue-400"><%= Math.round(weather.wind.speed) %></span>
+    <span class="text-xs text-blue-200 mb-1">km/h</span>
+  </div>
+</div>
+  </div>
   </div>
 </div>
 <div class="flex justify-center items-center mt-16 text-white ">
@@ -202,7 +219,6 @@
 </div>
 </div>
 </section> 
-<% } %>
 <!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
 </body>
 </html>
