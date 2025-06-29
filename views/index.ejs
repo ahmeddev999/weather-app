@@ -38,7 +38,7 @@
 <main class="flex flex-col items-center mt-16 text-blue-100 font-bold">
   <div>
 
-    <h2 class="text-5xl"> <%= city %> Forecast</h2>
+    <h2 class="text-5xl text-center"> <%= city %> Forecast</h2>
 
     <div class="text-center">
 
@@ -73,8 +73,8 @@
     <p class="text-2xl sm:text-3xl w-20">Today</p>
 
     <!-- Icon -->
-    <div class="w-12 h-12 flex items-center justify-center">
-      <img class="h-10 w-10" src="/images/weather-clear-symbolic.svg" alt="sunny" /> <!-- data -->
+    <div class="w-16 h-16 flex items-center justify-center">
+      <img class="h-15 w-15" src="http://openweathermap.org/img/wn/<%= weather.weather[0].icon %>@2x.png" alt="Weather Icon"> <!-- data -->
     </div>
 
     <!-- Temp -->
@@ -120,7 +120,7 @@
     <div class="col-span-7 mt-2">
       <div class="w-full flex justify-between items-center">
         <p>Wind</p>
-        <p><%= Math.floor(weather.wind.speed) %> km/h</p><!-- data -->
+        <p><%= Math.round(weather.wind.speed) %> km/h</p><!-- data -->
       </div>
       <hr class="w-full opacity-45 mb-3">
       <% if (locals.weather.wind.gusts) {%>
@@ -164,7 +164,7 @@
   <div class="col-start-1 row-start-1 <%= getDirClass('NW') %>">NW</div>
   <!-- Center: Wind speed -->
   <div class="col-start-3 row-start-3 flex flex-col items-center justify-center">
-    <span class="text-3xl font-bold text-blue-400"><%= Math.round(weather.wind.speed) %></span>
+    <span class="text-3xl font-bold text-blue-500"><%= Math.round(weather.wind.speed) %></span>
     <span class="text-xs text-blue-200 mb-1">km/h</span>
   </div>
 </div>
@@ -174,47 +174,60 @@
 <div class="flex justify-center items-center mt-16 text-white ">
   <div class="w-[95%] lg:max-w-[80%] flex flex-row flex-wrap justify-center gap-8 mx-auto mb-6">
 
-    <!-- Precipitation Box -->
+    <!-- Sea level Box -->
     <div class="flex items-center justify-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl min-w-[140px] sm:min-w-[180px] flex-1">
       <div>
         <div class="flex items-center gap-2 justify-center">
-          <img class="w-8 h-8 opacity-70" src="/images/water-drop-svgrepo-com.svg" alt="dropwater">
-          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-6">PRECIPITATION</p>
+          <img class="w-8 h-8 opacity-70" src="/images/sea-waves-svgrepo-com.svg" alt="dropwater">
+          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-2"> SEA LEVEL</p>
         </div>
-        <p class="text-4xl sm:text-5xl mt-4 font-bold ml-7 mb-4">12<span class="text-2xl font-bold">mm</span></p>
-        <p class="text-sm m-0.5">today</p>
+        <p class="text-4xl sm:text-5xl mt-4 font-bold ml-1 mb-4"><span class="text-2xl font-bold"><%= weather.main.sea_level %>hPa</span></p>
       </div>
     </div>
 
     <!-- Sun Box -->
+     <% // Convert sunrise and sunset times from Unix timestamp to Date object
+        const sr = weather.sys.sunrise;
+        const ss = weather.sys.sunset;
+        const sunrise = new Date(sr * 1000);
+        const sunset = new Date(ss * 1000);
+        const sunriseTime = sunrise.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+        });
+        const sunsetTime = sunset.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+        });
+        %>
     <div class="flex items-center justify-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl min-w-[140px] sm:min-w-[180px] flex-1">
       <div>
         <div class="flex items-center gap-2 justify-center">
           <img class="w-6 h-6 opacity-70" src="/images/sunrise-svgrepo-com.svg" alt="sunrise">
-          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-7">SUNRISE</p>
+          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-2">SUNRISE</p>
         </div>
-        <p class="text-2xl sm:text-md mt-1.5 font-bold">4:47<span class="text-[15px]">AM</span></p>
+        <p class="text-2xl sm:text-md mt-1.5 font-bold"><%= sunriseTime %></p>
         <hr class="w-full opacity-45 mb-4">
         <div class="flex items-center gap-2 mb-1 justify-center">
           <img class="w-6 h-6 opacity-70" src="/images/sunset-svgrepo-com.svg" alt="sunset">
-          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-7 mt-0.5">SUNSET</p>
+          <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-2 mt-0.5">SUNSET</p>
         </div>
-        <p class="text-2xl sm:text-md font-bold">7:22<span class="text-[15px]">PM</span></p>
+        <p class="text-2xl sm:text-md font-bold"><%= sunsetTime %></p>
       </div>
     </div>
 
     <!-- Visibility Box -->
-    <div class="flex items-center justify-center text-center bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl min-w-[140px] sm:min-w-[180px] flex-1">
+    <div class="flex items-center justify-center text-center mb-5 bg-white/10 backdrop-blur-md shadow-lg border border-white/30 p-6 rounded-xl min-w-[140px] sm:min-w-[180px] flex-1">
       <div>
         <div class="flex items-center gap-2 justify-center">
           <img class="w-6 h-6 opacity-70" src="/images/eye-svgrepo-com.svg" alt="Visibility">
           <p class="text-sm sm:text-lg font-bold opacity-80 whitespace-nowrap mr-7">VISIBILITY</p>
         </div>
-        <p class="text-4xl sm:text-5xl mt-4 font-bold ml-5 mb-4">19<span class="text-2xl">km</span></p>
-        <p class="text-sm">Perfectly clear view</p>
+        <p class="text-4xl sm:text-5xl mt-4 font-bold ml-5"><%= Math.floor(weather.visibility / 1000) %><span class="text-2xl">km</span></p>
       </div>
     </div>
-
   </div>
 </div>
 </div>
