@@ -18,7 +18,7 @@ A simple weather app that shows current weather using the OpenWeatherMap API.
 1. Clone this repo.
 2. Run `npm install`
 3. Start with `node app.js`
-4. Visit `http://localhost:3000`
+4. Visit `http://localhost:3033`
 
 ## Credits
 - Built with guidance from Angela Yu’s course.
